@@ -13,7 +13,11 @@ const PageLoading = () => {
         };
 
         const finishHandler = () => {
-            setLoading(false);
+            setLoading(true);
+            // Aguardar dois segundos antes de definir loading como false
+            setTimeout(() => {
+                setLoading(false);
+            }, 5000);
         };
 
         document.addEventListener('inertia:start', startHandler);
