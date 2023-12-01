@@ -6,6 +6,11 @@ Route::get('/', function(){
     return inertia('Welcome');
 });
 
-Route::get('/teste', function(){
-    return inertia('Teste');
+Route::get('/Calendar', function(){
+    return inertia('Calendar');
 });
+
+Route::get('/Account', function(){
+    return inertia('Account');
+});
+
