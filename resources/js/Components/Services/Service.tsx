@@ -1,6 +1,6 @@
 import {Box, Flex, HStack, Stack, Text } from "@chakra-ui/react";
 import Button from "@/Components/Button/Button"
-import '../.././../css/Service/service.css';
+import './service.css';
 interface ServiceProps{
     nameService:String
 }

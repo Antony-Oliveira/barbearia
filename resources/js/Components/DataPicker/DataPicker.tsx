@@ -6,9 +6,9 @@ import { Box, Flex } from '@chakra-ui/react';
 import { ptBR } from 'date-fns/locale';
 import './style.css';
 
-export default function Calendar() {
+export default function DataPicker() {
   const [selected, setSelected] = useState<Date>();
-  let footer = <p>Please pick a day.</p>;
+  let footer = <p>Escolha um dia.</p>;
   if (selected) {
     footer = <p>A data {format(selected, 'dd/MM/yyyy', {locale: ptBR})} foi escolhida.</p>;
   }
