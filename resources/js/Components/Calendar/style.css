@@ -1,0 +1,68 @@
+/* day-picker.css */
+
+/* Aumenta a largura do DayPicker */
+.my-custom-daypicker {
+    width: auto;
+}
+
+/* Adiciona algumas regras de estilo conforme as variáveis fornecidas */
+.my-custom-daypicker {
+    --rdp-cell-size: 55px;
+    /* Ajuste o tamanho das células do dia conforme necessário. */
+    --rdp-caption-font-size: 24px;
+    /* Tamanho da fonte para os rótulos de legenda. */
+    --rdp-accent-color: #5CC6BA;
+    /* Cor de destaque para os dias selecionados. */
+    --rdp-background-color: #f0f0f0;
+    /* Cor de fundo para elementos em foco ou hover. */
+    --rdp-accent-color-dark: #5CC6BA;
+    /* Cor de destaque para dias selecionados em modo escuro. */
+    --rdp-background-color-dark: #333333;
+    /* Cor de fundo para elementos em foco ou hover em modo escuro. */
+    --rdp-outline: 2px solid var(--rdp-accent-color);
+    /* Borda de contorno para elementos em foco. */
+    --rdp-outline-selected: 3px solid var(--rdp-accent-color);
+    /* Borda de contorno para elementos em foco e selecionados. */
+    --rdp-selected-color: #fff;
+    /* Cor do texto para os dias selecionados. */
+}
+
+/* Adiciona algumas regras de estilo para os modificadores personalizados */
+.my-selected:not([disabled]) {
+    font-weight: bold;
+    border: 2px solid currentColor;
+}
+
+.my-selected:hover:not([disabled]) {
+    border-color: blue;
+    color: blue;
+}
+
+.my-today {
+    font-weight: bold;
+    font-size: 140%;
+    color: red;
+}
+
+/* Adiciona uma regra para pintar o dia de hoje em vermelho */
+.my-custom-daypicker .rdp-day_today:not(.rdp-day_outside) {
+    color: red;
+}
+
+
+.rdp-caption {
+    padding: 10px;
+}
+
+
+
+.rdp-caption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: capitalize;
+}
+
+.rdp-cell {
+font-weight: bold;
+}
