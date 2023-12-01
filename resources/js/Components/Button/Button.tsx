@@ -1,13 +1,15 @@
-import { Flex, Button as ButtonUI, Stack, Text } from "@chakra-ui/react";
+import { Flex, Button as ButtonUI, Stack, Text, Box } from "@chakra-ui/react";
 interface ButtonProps{
     text:String
 }
 const Button = ({text}:ButtonProps) => {
     return (
       <>
-        <ButtonUI bg={'#5CC6BA'} color='#fff'>
-            {text}
-        </ButtonUI>
+        <Flex justifyContent={'center'} marginTop={10}>
+          <ButtonUI bg={'#5CC6BA'} color='#fff' width={300}>
+              {text}
+          </ButtonUI>
+        </Flex>
       </>
     )
 }

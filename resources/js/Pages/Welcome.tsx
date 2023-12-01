@@ -12,6 +12,9 @@ function Welcome() {
         <>
             <Home></Home>
             <Services></Services>
+            <Link href="/Calendar" className="schedule">
+                <Button text={'Agendar'}></Button>
+            </Link>
             <NavBar></NavBar>
             <PageLoading />
 

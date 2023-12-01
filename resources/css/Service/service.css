@@ -1,6 +1,3 @@
-.main{
-    overflow: scroll;
-}
 @media screen and (max-width: 290px){
     .main {
         width: 80px;

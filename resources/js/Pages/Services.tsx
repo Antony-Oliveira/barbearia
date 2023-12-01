@@ -1,7 +1,6 @@
 import Button from "@/Components/Button/Button";
-import PageLoading from "@/Components/PageLoading/PageLoading";
 import Service from "@/Components/Services/Service";
-import { Flex, Link, Stack, Text } from "@chakra-ui/react";
+import { Flex, Stack, Text } from "@chakra-ui/react";
 
 function Services() {
   return (
@@ -18,9 +17,6 @@ function Services() {
         <Service nameService="Pigmentação" />
         <Service nameService="Tintura Cabelo&Barba" />
       </Flex>
-      <Link href="/Calendar">
-        <Button text={'Agendar'}></Button>
-      </Link>
     </Stack>
 
   </>
