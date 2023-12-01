@@ -8,6 +8,7 @@ function Calendar() {
            <Home></Home>
            <p>Olá, Mundo!</p>
            <p>Calendar</p>
+
            <NavBar></NavBar>
            <PageLoading />
         </>
