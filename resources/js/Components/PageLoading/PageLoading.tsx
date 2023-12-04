@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { usePage } from '@inertiajs/react';
-import spinner from '@/assets/spinner.svg'
+import spinner from '@/assets/loading.svg'
 import { Box, Flex, Text, Image } from '@chakra-ui/react';
 
 const PageLoading = () => {
@@ -14,7 +14,6 @@ const PageLoading = () => {
 
         const finishHandler = () => {
             setLoading(true);
-            // Aguardar dois segundos antes de definir loading como false
             setTimeout(() => {
                 setLoading(false);
             }, 5000);
@@ -42,8 +41,8 @@ const PageLoading = () => {
             bottom="0"
             zIndex="50"
         >
-            <Box textAlign="center" mb={4}>
-                <Image w={'135px'}  src={spinner} alt="Spinner" />
+            <Box textAlign="center" mb={'100'}>
+                <Image w={'135px'} src={spinner} alt="Spinner" />
 
                 <Text fontSize={'24px'} color="white" fontWeight="bold" mt={2}>
                     Johnny
