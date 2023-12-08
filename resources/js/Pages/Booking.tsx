@@ -4,6 +4,7 @@ import PageLoading from "@/Components/PageLoading/PageLoading";
 import DataPicker from "@/Components/DataPicker/DataPicker";
 import { Divider } from "@chakra-ui/react";
 import { useState } from "react";
+import TimeSlots from "@/Components/TimeSlots/TimeSlots";
 const Booking = () => {
     const [selectedDate, setSelectedDate] = useState<string | undefined>(undefined);
     const handleDataSelect = (date: string) => {
@@ -15,6 +16,7 @@ const Booking = () => {
             <Header text="Fazer uma reserva"></Header>
             <DataPicker onDataSelect={handleDataSelect}></DataPicker>
             <Divider />
+            <TimeSlots></TimeSlots>
             <NavBar activePage="Booking"></NavBar>
             <PageLoading />
         </>

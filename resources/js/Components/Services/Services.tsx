@@ -1,10 +1,10 @@
 import { Box, Stack, Text } from "@chakra-ui/react";
-import './service.css'
+import './services.css'
 interface ServiceProps {
     nameService: string;
 }
 
-const Service = ({ nameService }: ServiceProps) => {
+const Services = ({ nameService }: ServiceProps) => {
     return (
         <>
             <Stack
@@ -32,4 +32,4 @@ const Service = ({ nameService }: ServiceProps) => {
     );
 };
 
-export default Service;
+export default Services;

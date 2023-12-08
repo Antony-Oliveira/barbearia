@@ -1,11 +1,11 @@
-import { useState } from 'react';
+// DataPicker.tsx
+import React, { useState } from 'react';
 import { format } from 'date-fns';
 import { DayPicker, SelectSingleEventHandler } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { Box, Flex } from '@chakra-ui/react';
 import { ptBR } from 'date-fns/locale';
-import './style.css'
-import {getMonth} from 'date-fns'
+import './style.css';
 
 interface DataPickerProps {
   onDataSelect: (date: string) => void;
@@ -17,7 +17,7 @@ export default function DataPicker({ onDataSelect }: DataPickerProps) {
   const handleDataSelect = (date: Date) => {
     setSelected(date);
     if (onDataSelect) {
-      onDataSelect(format(date, 'dd/MM/yyyy', {locale: ptBR}));
+      onDataSelect(format(date, 'dd/MM/yyyy', { locale: ptBR }));
     }
   };
 
@@ -34,8 +34,8 @@ export default function DataPicker({ onDataSelect }: DataPickerProps) {
   };
 
   return (
-    <Flex justifyContent="center" alignItems="center" minH='40vh'>
-      <Box textAlign="center">
+    <Flex justifyContent="center" alignItems="center" minH={['30vh', '60vh']}>
+      <Box textAlign="center" width="auto">
         <DayPicker
           showOutsideDays
           className='my-custom-daypicker'

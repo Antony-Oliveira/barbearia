@@ -1,5 +1,5 @@
 import { HStack, Stack, Text, Input } from "@chakra-ui/react";
-import Service from "@/Components/Services/Service";
+import Service from "@/Components/Services/Services";
 
 function Services() {
     return (

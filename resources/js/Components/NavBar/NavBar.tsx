@@ -22,10 +22,10 @@ const navItems: NavItem[] = [
 export default function NavBar({ activePage }: NavBarProps) {
     return (
         <Flex
-            position="fixed"
+            position={'fixed'}
             bottom={0}
             width="100%"
-            p={3}
+            p={2}
             justify="space-around"
             borderTop='#ECECEC 1px solid'
             zIndex={1}
