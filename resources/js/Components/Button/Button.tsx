@@ -7,7 +7,7 @@ interface ButtonProps {
 const Button = ({ text, isLoading = false, as = undefined }: ButtonProps) => {
     return (
         <>
-            <Flex justifyContent={'center'} marginTop={10}>
+            <Flex justifyContent={'center'} >
                 <ButtonUI bg={'#5CC6BA'} color='#fff' width={300} isLoading={isLoading} as={as}>
                     {text}
                 </ButtonUI>

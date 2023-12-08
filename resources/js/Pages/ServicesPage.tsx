@@ -1,5 +1,5 @@
 import { HStack, Stack, Text, Input } from "@chakra-ui/react";
-import Service from "@/Components/Services/Services";
+import Service from "@/Components/Services/Service";
 
 function Services() {
     return (
@@ -23,7 +23,7 @@ function Services() {
                 />
             </Stack>
 
-            <HStack spacing={4} justifyContent="center" flexWrap="wrap">
+            <HStack spacing={3} justifyContent="center" flexWrap="wrap">
                 <Service nameService="Cortes Sociais" />
                 <Service nameService="Corte Personalizado" />
                 <Service nameService="Barba" />

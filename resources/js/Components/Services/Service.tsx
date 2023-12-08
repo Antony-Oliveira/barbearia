@@ -1,14 +1,14 @@
 import { Box, Stack, Text } from "@chakra-ui/react";
-import './services.css'
+import './service.css'
 interface ServiceProps {
     nameService: string;
 }
 
-const Services = ({ nameService }: ServiceProps) => {
+const Service = ({ nameService }: ServiceProps) => {
     return (
         <>
             <Stack
-                mt={'2vh'}
+                // mt={'2vh'}
                 className="main"
                 display={"flex"}
                 alignItems={"center"}
@@ -19,12 +19,12 @@ const Services = ({ nameService }: ServiceProps) => {
             >
                 <Box
                     className="box"
-                    w="80px"
-                    h={"80px"}
+                    w="60px"
+                    h={"60px"}
                     bg="#F1F5F4"
                     borderRadius={"15px"}
                 ></Box>
-                <Text className="text" marginTop={"6px"} textAlign={"center"} fontSize={14}>
+                <Text className="text" textAlign={"center"} fontSize={14}>
                     {nameService}
                 </Text>
             </Stack>
@@ -32,4 +32,4 @@ const Services = ({ nameService }: ServiceProps) => {
     );
 };
 
-export default Services;
+export default Service;
