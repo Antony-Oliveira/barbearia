@@ -16,7 +16,9 @@ const Booking = () => {
             <Header text="Fazer uma reserva"></Header>
             <DataPicker onDataSelect={handleDataSelect}></DataPicker>
             <Divider />
-            <TimeSlots></TimeSlots>
+            <TimeSlots text={'Manhã'}></TimeSlots>
+            <TimeSlots text={'Tarde'}></TimeSlots>
+            <TimeSlots text={'Noite'}></TimeSlots>
             <NavBar activePage="Booking"></NavBar>
             <PageLoading />
         </>

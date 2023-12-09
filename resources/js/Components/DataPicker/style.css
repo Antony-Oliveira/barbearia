@@ -7,9 +7,9 @@
 
 /* Adiciona algumas regras de estilo conforme as variáveis fornecidas */
 .my-custom-daypicker {
-    --rdp-cell-size: 55px;
+    --rdp-cell-size: 45px;
     /* Ajuste o tamanho das células do dia conforme necessário. */
-    --rdp-caption-font-size: 24px;
+    --rdp-caption-font-size: 20px;
     /* Tamanho da fonte para os rótulos de legenda. */
     --rdp-accent-color: #5CC6BA;
     /* Cor de destaque para os dias selecionados. */

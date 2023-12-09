@@ -34,7 +34,7 @@ export default function DataPicker({ onDataSelect }: DataPickerProps) {
   };
 
   return (
-    <Flex justifyContent="center" alignItems="center" minH={['30vh', '60vh']}>
+    <Flex justifyContent="center" alignItems="center">
       <Box textAlign="center" width="auto">
         <DayPicker
           showOutsideDays
