@@ -1,4 +1,4 @@
-import { Box, Divider, Heading, Text, VStack } from '@chakra-ui/react';
+import { Box, Divider, Text, VStack } from '@chakra-ui/react';
 import Home from '@/Components/Header/Header';
 import NavBar from '@/Components/NavBar/NavBar';
 import PageLoading from '@/Components/PageLoading/PageLoading';
@@ -43,7 +43,6 @@ function Account({ user, bookings }: AccountProps) {
     return (
         <>
             <Home text="Meu perfil" />
-            <NavBar activePage="Account" />
 
             <VStack spacing={4} align="stretch" p={4} fontFamily={'Roboto'}>
                 <Box>
@@ -74,6 +73,8 @@ function Account({ user, bookings }: AccountProps) {
             </VStack>
 
             <PageLoading />
+            <NavBar activePage="Account" />
+
         </>
     );
 }

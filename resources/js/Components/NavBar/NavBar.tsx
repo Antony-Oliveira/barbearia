@@ -22,8 +22,8 @@ const navItems: NavItem[] = [
 export default function NavBar({ activePage }: NavBarProps) {
   return (
     <>
-      
-      <Flex direction="column" minHeight="100vh"></Flex>{/* Main content container */}
+
+      <Flex direction="column" minHeight="100vh"></Flex>
       <Flex
         position="fixed"
         bottom={0}
@@ -32,7 +32,7 @@ export default function NavBar({ activePage }: NavBarProps) {
         justify="space-around"
         borderTop="#ECECEC 1px solid"
         zIndex={1}
-        bg="white" 
+        bg="white"
       >
         {navItems.map((item) => (
           <Link key={item.page} href={item.page}>

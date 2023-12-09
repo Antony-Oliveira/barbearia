@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Models\Booking;
-use App\Models\Service;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -29,3 +30,6 @@ Route::get('/account', function(){
 Route::get('/login', function(){
     return redirect('/');
 })->name('login');
+
+
+Route::post('/availability-check', [BookingController::class, 'availabilityCheck'])->name('booking.availability.check');

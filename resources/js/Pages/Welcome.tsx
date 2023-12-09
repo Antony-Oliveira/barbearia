@@ -3,7 +3,7 @@ import Home from "@/Components/Header/Header";
 import NavBar from "@/Components/NavBar/NavBar";
 import PageLoading from "@/Components/PageLoading/PageLoading";
 import { Link } from "@inertiajs/react";
-import Services from "./ServicesPage";
+import Services from "./Services";
 
 function Welcome() {
     return (

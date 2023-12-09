@@ -1,4 +1,5 @@
 <?php
+
 namespace Database\Factories;
 
 use App\Models\Booking;
@@ -20,12 +21,17 @@ class BookingFactory extends Factory
         // Crie entre 1 e 3 serviços para esta reserva
         $services = Service::factory(rand(1, 3))->create();
 
+        $times = ['09:00', '09:30', '10:00', '10:30', '13:00', '13:30', '14:00', '14:30'];
+        $time = $this->faker->randomElement($times);
+
+        $date = $this->faker->dateTimeBetween('2023-12-01', '2023-12-31')->format('d/m/Y');
+
         return [
             'user_id' => $user->id,
-            'date' => $this->faker->dateTimeBetween()->format('d/m/Y'),
-            'time' => $this->faker->time('H:i'),
+            'date' => $date,
+            'time' => $time,
             'note' => $this->faker->sentence,
-            'total_price' => 0.0, // Você pode ajustar isso dependendo da sua lógica
+            'total_price' => 0.0,
         ];
     }
 
@@ -36,11 +42,7 @@ class BookingFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (Booking $booking) {
-            // Vincule os serviços criados anteriormente à reserva
             $booking->services()->attach(Service::pluck('id')->random());
-
         });
     }
 }
-
-?>

@@ -1,5 +1,5 @@
 // DataPicker.tsx
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { format } from 'date-fns';
 import { DayPicker, SelectSingleEventHandler } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
@@ -21,10 +21,6 @@ export default function DataPicker({ onDataSelect }: DataPickerProps) {
     }
   };
 
-  let footer = <p>Escolha um dia.</p>;
-  if (selected) {
-    footer = <p>A data {format(selected, 'dd/MM/yyyy', { locale: ptBR })} foi escolhida.</p>;
-  }
 
   const onSelect: SelectSingleEventHandler = (day) => {
     setSelected(day);
@@ -43,7 +39,6 @@ export default function DataPicker({ onDataSelect }: DataPickerProps) {
           mode="single"
           selected={selected}
           onSelect={onSelect}
-          footer={footer}
           fromMonth={new Date()}
         />
       </Box>
