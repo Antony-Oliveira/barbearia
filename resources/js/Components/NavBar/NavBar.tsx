@@ -1,25 +1,9 @@
 import React from 'react';
 import { Flex, IconButton } from "@chakra-ui/react";
 import { Link } from "@inertiajs/react";
-import { FaHome, FaCalendar, FaUser } from "react-icons/fa";
+import { navItems, NavBarProps } from "./NavBar.logic";
 
-interface NavBarProps {
-  activePage: string;
-}
-
-interface NavItem {
-  page: string;
-  icon: JSX.Element;
-  label: string;
-}
-
-const navItems: NavItem[] = [
-  { page: "/", icon: <FaHome color="#5CC6BA" />, label: "Home" },
-  { page: "/booking", icon: <FaCalendar color="#5CC6BA" />, label: "Booking" },
-  { page: "/account", icon: <FaUser color="#5CC6BA" />, label: "Account" },
-];
-
-export default function NavBar({ activePage }: NavBarProps) {
+const NavBar = ({ activePage }: NavBarProps) => {
   return (
   <>
     <Flex></Flex>
@@ -55,3 +39,5 @@ export default function NavBar({ activePage }: NavBarProps) {
   </>
   );
 }
+
+export default NavBar;
