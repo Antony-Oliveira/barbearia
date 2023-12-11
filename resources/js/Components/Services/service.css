@@ -1,0 +1,9 @@
+@media screen and (max-height: 800px) {
+    .main .box {
+        width: 40px;
+        height: 40px;
+    }
+    .main .box .text {
+        font-size: 10px;
+    }
+}

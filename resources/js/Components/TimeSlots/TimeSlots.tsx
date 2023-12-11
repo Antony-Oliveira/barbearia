@@ -60,7 +60,7 @@ import Button from '../Button/Button';
                         </Flex>
                     </React.Fragment>
                 ))}
-                <Text mt={2} textAlign="center">
+                <Text m={4} textAlign="center">
                     Hora selecionada: {selectedTime || 'Nenhum'}
                 </Text>
                 <Button text={'Reservar'}></Button>
