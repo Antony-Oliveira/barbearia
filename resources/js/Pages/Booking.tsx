@@ -12,27 +12,29 @@ const Booking = () => {
     const [unavailableTimes, setUnavailableTimes] = useState<string[]>([]);
     const [loading, setIsLoading] = useState<boolean>(false);
 
-    const handleDataSelect = async (date: string) => {
+    const handleDataSelect = async (date: string | undefined) => {
         setSelectedDate(date);
-        setIsLoading(true);
-        try {
-            const response = await window.axios.post(route('booking.availability.check'), {
-                date: date
-            });
+        if (date) {
+            setIsLoading(true);
+            try {
+                const response = await window.axios.post(route('booking.availability.check'), {
+                    date: date
+                });
+                console.log(response);
+                setUnavailableTimes(response.data.unavaiableTimes);
+            } catch (e) {
 
-            console.log(response);
-            setUnavailableTimes(response.data.unavaiableTimes);
-        } catch (e) {
+                //...
 
-        } finally {
-            setIsLoading(false);
+            } finally {
+                setIsLoading(false);
+            }
         }
     }
 
     const handleTimeSelection = (time: string | null) => {
         setSelectedTime(time);
     };
-
 
     return (
         <>

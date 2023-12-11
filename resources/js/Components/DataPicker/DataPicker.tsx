@@ -8,25 +8,15 @@ import { ptBR } from 'date-fns/locale';
 import './style.css';
 
 interface DataPickerProps {
-  onDataSelect: (date: string) => void;
+  onDataSelect: (date: string | undefined) => void;
 }
 
 export default function DataPicker({ onDataSelect }: DataPickerProps) {
   const [selected, setSelected] = useState<Date | undefined>();
 
-  const handleDataSelect = (date: Date) => {
-    setSelected(date);
-    if (onDataSelect) {
-      onDataSelect(format(date, 'dd/MM/yyyy', { locale: ptBR }));
-    }
-  };
-
-
   const onSelect: SelectSingleEventHandler = (day) => {
     setSelected(day);
-    if (day instanceof Date) {
-      handleDataSelect(day);
-    }
+    onDataSelect(day ? format(day, 'dd/MM/yyyy', { locale: ptBR }) : undefined);
   };
 
   return (
