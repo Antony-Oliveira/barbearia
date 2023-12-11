@@ -9,7 +9,7 @@ const Button = ({ text, isLoading = false, as = undefined }: ButtonProps) => {
     return (
         <>
             <Flex justifyContent={'center'} >
-                <ButtonUI className="default-button" bg={'#5CC6BA'} color='#fff' width={200} isLoading={isLoading} as={as} m={10}>
+                <ButtonUI className="default-button" bg={'#5CC6BA'} color='#fff' width={200} isLoading={isLoading} as={as}>
                     {text}
                 </ButtonUI>
             </Flex>
