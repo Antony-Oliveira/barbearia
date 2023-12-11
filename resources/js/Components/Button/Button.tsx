@@ -1,4 +1,5 @@
 import { Flex, Button as ButtonUI, As } from "@chakra-ui/react";
+import './Button.css'
 interface ButtonProps {
     text: String,
     isLoading?: boolean
@@ -8,7 +9,7 @@ const Button = ({ text, isLoading = false, as = undefined }: ButtonProps) => {
     return (
         <>
             <Flex justifyContent={'center'} >
-                <ButtonUI bg={'#5CC6BA'} color='#fff' width={200} isLoading={isLoading} as={as}>
+                <ButtonUI className="default-button" bg={'#5CC6BA'} color='#fff' width={200} isLoading={isLoading} as={as} m={10}>
                     {text}
                 </ButtonUI>
             </Flex>

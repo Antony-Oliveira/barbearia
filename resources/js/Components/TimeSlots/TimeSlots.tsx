@@ -28,7 +28,6 @@ import Button from '../Button/Button';
                         </Text>
                         <Flex
                             justify="center"
-                            gap={3}
                             flexWrap="wrap"
                         >
                             {period.hours.map((time, index) => {
@@ -42,6 +41,7 @@ import Button from '../Button/Button';
                                         borderWidth="1px"
                                         borderRadius="md"
                                         p={1}
+                                        mr={2}
                                         color={selectedTime === time ? '#FFFFFF' : '#A0A0A0'}
                                         backgroundColor={selectedTime === time ? '#5CC6BA' : 'transparent'}
                                         _hover={{ cursor: 'pointer' }}
@@ -60,7 +60,7 @@ import Button from '../Button/Button';
                         </Flex>
                     </React.Fragment>
                 ))}
-                <Text m={4} textAlign="center">
+                <Text m={5} textAlign="center">
                     Hora selecionada: {selectedTime || 'Nenhum'}
                 </Text>
                 <Button text={'Reservar'}></Button>

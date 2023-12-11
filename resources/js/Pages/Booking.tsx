@@ -51,11 +51,10 @@ const Booking = () => {
                     <TimeSlots unavailableTimes={unavailableTimes} onSelectTime={handleTimeSelection} />
                 )
             ) : (
-                <Center mt={10} mb={10}>
+                <Center mt={5} mb={5}>
                     <Text>Selecione uma data para iniciar seu agendamento</Text>
                 </Center>
             )}
-            {/* <Button text={'Reservar'}></Button> */}
             <NavBar activePage="Booking" />
             <PageLoading />
         </>
