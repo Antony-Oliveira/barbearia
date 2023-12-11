@@ -40,7 +40,7 @@
 
 .my-today {
     font-weight: bold;
-    font-size: 140%;
+    /* font-size: 140%; */
     color: red;
 }
 
@@ -51,7 +51,7 @@
 
 
 .rdp-caption {
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 
@@ -65,4 +65,12 @@
 
 .rdp-cell {
 font-weight: bold;
+}
+
+@media screen and (max-width: 400px) {
+    .my-custom-daypicker {
+        --rdp-cell-size: 30px;
+        /* Ajuste o tamanho das células do dia conforme necessário. */
+        --rdp-caption-font-size: 14px;
+    }    
 }

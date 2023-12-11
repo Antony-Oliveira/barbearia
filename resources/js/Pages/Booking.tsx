@@ -5,6 +5,7 @@ import DataPicker from "@/Components/DataPicker/DataPicker";
 import { Center, Divider, Spinner, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import TimeSlots from "@/Components/TimeSlots/TimeSlots";
+// import Button from "@/Components/Button/Button";
 
 const Booking = () => {
     const [selectedDate, setSelectedDate] = useState<string | undefined>(undefined);
@@ -50,10 +51,11 @@ const Booking = () => {
                     <TimeSlots unavailableTimes={unavailableTimes} onSelectTime={handleTimeSelection} />
                 )
             ) : (
-                <Center mt={10}>
+                <Center mt={10} mb={10}>
                     <Text>Selecione uma data para iniciar seu agendamento</Text>
                 </Center>
             )}
+            {/* <Button text={'Reservar'}></Button> */}
             <NavBar activePage="Booking" />
             <PageLoading />
         </>

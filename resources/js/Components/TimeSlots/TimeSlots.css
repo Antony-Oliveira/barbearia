@@ -1,0 +1,37 @@
+.TimeSlots-period-label {
+    margin: 5px  auto; 
+    width: 200px;
+}
+@media screen and (min-height: 80px) {
+    /* Ajuste o tamanho da fonte e o espaçamento conforme necessário */
+    .TimeSlots {
+        font-size: 10px;
+    }
+
+    .TimeSlots-period-label {
+    }
+
+    .TimeSlots-hour-box {
+        font-size: 10px;
+    }
+
+    .TimeSlots-selected {
+    }
+}
+
+/* Estilos padrão para telas maiores */
+.TimeSlots {
+    /* Estilos padrão aqui */
+}
+
+.TimeSlots-period-label {
+    /* Estilos padrão aqui */
+}
+
+.TimeSlots-hour-box {
+    /* Estilos padrão aqui */
+}
+
+.TimeSlots-selected {
+    /* Estilos padrão aqui */
+}
