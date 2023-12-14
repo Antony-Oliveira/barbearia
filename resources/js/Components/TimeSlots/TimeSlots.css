@@ -6,35 +6,4 @@
     max-width: 300px;
     width: 100%;
 }
-@media screen and (max-height: 800px) {
-    /* Ajuste o tamanho da fonte e o espaçamento conforme necessário */
-    .TimeSlots {
-    }
 
-    .TimeSlots-period-label {
-    }
-
-    .TimeSlots-hour-box {
-        /* font-size: 10px; */
-    }
-
-    .TimeSlots-selected {
-    }
-}
-
-/* Estilos padrão para telas maiores */
-.TimeSlots {
-    /* Estilos padrão aqui */
-}
-
-.TimeSlots-period-label {
-    /* Estilos padrão aqui */
-}
-
-.TimeSlots-hour-box {
-    /* Estilos padrão aqui */
-}
-
-.TimeSlots-selected {
-    /* Estilos padrão aqui */
-}

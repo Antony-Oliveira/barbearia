@@ -2,14 +2,12 @@
     import { Box, Flex, Text } from '@chakra-ui/react';
     import { times } from './app';
     import './TimeSlots.css'
-import Button from '../Button/Button';
 
     interface TimeSlotsProps {
         onSelectTime: (selectedTime: string | null) => void;
         unavailableTimes?: string[];
     }
 
-    // ... restante do código
 
     const TimeSlots = ({ onSelectTime, unavailableTimes = [] }: TimeSlotsProps) => {
         const [selectedTime, setSelectedTime] = React.useState<string | null>(null);
@@ -23,7 +21,7 @@ import Button from '../Button/Button';
             <Box className="TimeSlots">
                 {times.map((period, periodIndex) => (
                     <React.Fragment key={periodIndex}>
-                        <Text className="TimeSlots-period-label">
+                        <Text my={'2'}>
                             {period.label}
                         </Text>
                         <Flex
@@ -34,14 +32,13 @@ import Button from '../Button/Button';
                                 const isUnavailable = unavailableTimes.includes(time);
                                 return (
                                     <Box
-                                        className={`TimeSlots-hour-box ${selectedTime === time ? 'TimeSlots-selected' : ''}`}
                                         aria-disabled={isUnavailable}
                                         key={index}
                                         textAlign="center"
                                         borderWidth="1px"
                                         borderRadius="md"
-                                        p={1}
-                                        mr={2}
+                                        w={20}
+                                        m={1.5}
                                         color={selectedTime === time ? '#FFFFFF' : '#A0A0A0'}
                                         backgroundColor={selectedTime === time ? '#5CC6BA' : 'transparent'}
                                         _hover={{ cursor: 'pointer' }}
@@ -63,7 +60,7 @@ import Button from '../Button/Button';
                 <Text m={5} textAlign="center">
                     Hora selecionada: {selectedTime || 'Nenhum'}
                 </Text>
-                <Button text={'Reservar'}></Button>
+
 
             </Box>
         );
