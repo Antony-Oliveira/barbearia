@@ -11,7 +11,7 @@ function Welcome() {
             <Home></Home>
             <Services></Services>
             <Link href={route('booking')} className="schedule">
-                <Button text={'Agendar'} as={'p'}></Button>
+                <Button as={'p'}>Reservar</Button>
             </Link>
             <NavBar activePage="Home"></NavBar>
             <PageLoading />
