@@ -8,7 +8,6 @@ const Service = ({ nameService }: ServiceProps) => {
     return (
         <>
             <Stack
-                // mt={'2vh'}
                 className="main"
                 display={"flex"}
                 alignItems={"center"}

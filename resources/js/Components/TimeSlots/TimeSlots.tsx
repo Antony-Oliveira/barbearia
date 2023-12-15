@@ -1,5 +1,6 @@
     import React from 'react';
     import { Box, Flex, Text } from '@chakra-ui/react';
+    import Button from "@/Components/Button/Button";
     import { times } from './app';
     import './TimeSlots.css'
 
@@ -60,7 +61,7 @@
                 <Text m={5} textAlign="center">
                     Hora selecionada: {selectedTime || 'Nenhum'}
                 </Text>
-
+                <Button children="Reservar"></Button>
 
             </Box>
         );
