@@ -16,7 +16,7 @@ const TimeSlots = ({ onSelectTime, unavailableTimes = [] }: TimeSlotsProps) => {
     return (
         <Box className="TimeSlots">
             <Tabs isLazy variant={'soft-rounded'} align='center' onChange={() => setSelectedTime(null)}>
-                <TabList mb={1}>
+                <TabList mb={1} gap={3}>
                     {times.map((period) => (
                         <Tab key={period.label} _selected={{ bg: '#5CC6BA', color: '#fff' }}>{period.label}</Tab>
                     ))}
