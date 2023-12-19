@@ -8,22 +8,9 @@ function Services() {
                 <Text fontSize={18} fontWeight={700}>
                     Agende seu Serviço
                 </Text>
-                <Input
-                    type="text"
-                    placeholder="Qual serviço você deseja?"
-                    borderRadius={'10px'}
-                    bg={'#F1F5F4'}
-                    _placeholder={{
-                        fontFamily: 'Roboto',
-                        color: '#A0A0A0'
-                    }}
-                    mt={3}
-                    mb={10}
-                    w={310}
-                />
             </Stack>
 
-            <HStack spacing={3} justifyContent="center" flexWrap="wrap">
+            <HStack p={10} spacing={3} justifyContent="center" flexWrap="wrap">
                 <Service nameService="Cortes Sociais" />
                 <Service nameService="Corte Personalizado" />
                 <Service nameService="Barba" />

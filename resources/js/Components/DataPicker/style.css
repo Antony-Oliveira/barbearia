@@ -69,7 +69,7 @@ font-weight: bold;
 
 @media screen and (max-width: 400px) {
     .my-custom-daypicker {
-        --rdp-cell-size: 30px;
+        --rdp-cell-size: 40px;
         /* Ajuste o tamanho das células do dia conforme necessário. */
     }
     /* .rdp-caption {
