@@ -1,9 +1,8 @@
-import { FaHome, FaCalendar, FaUser, FaClock, FaWhatsapp } from "react-icons/fa";
+import { FaCalendar, FaClock, FaWhatsapp } from "react-icons/fa";
 import { MdAttachMoney } from "react-icons/md";
-
-
-export interface AccordionCustomProps {
-    activePage: string;
+import { Booking } from "@/types";
+export interface BookingAccordionProps {
+    booking: Booking;
 }
 
 interface AccordionItem {

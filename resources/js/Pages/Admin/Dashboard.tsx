@@ -1,13 +1,22 @@
-import AccordionCustom from "@/Components/AccordionCustom/AccordionBooking";
+import AccordionCustom from "@/Components/AccordionBooking/AccordionBooking";
 import Header from "@/Components/Header/Header";
 import NavBar from "@/Components/NavBar/NavBar";
 import PageLoading from "@/Components/PageLoading/PageLoading";
+import { Booking } from "@/types";
 
-const Dashboard = () => {
+interface DashboardProps {
+    bookings: Booking[];
+}
+const Dashboard = ({ bookings }: DashboardProps) => {
+
     return (
         <>
             <Header text="Admin" />
-            <AccordionCustom></AccordionCustom>
+            {
+                bookings.map((booking) => (
+                    <AccordionCustom booking={booking} />
+                ))
+            }
             <NavBar activePage="Dashboard" />
             <PageLoading />
         </>

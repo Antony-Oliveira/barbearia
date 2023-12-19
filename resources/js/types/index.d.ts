@@ -9,10 +9,12 @@ export interface User {
 
 export interface Booking {
     id: number;
-    booking_date: string;
+    date: string;
+    time: string;
     note?: string;
     total_price: number;
     services: Service[];
+    user: User;
 }
 
 export interface Service {

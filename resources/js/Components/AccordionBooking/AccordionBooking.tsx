@@ -1,5 +1,3 @@
-import Header from "@/Components/Header/Header";
-import PageLoading from "@/Components/PageLoading/PageLoading";
 import {
   Accordion,
   AccordionItem,
@@ -7,53 +5,53 @@ import {
   AccordionPanel,
   AccordionIcon,
   Box,
-  IconButton,
   Flex,
   Button as ChakraButton
 } from '@chakra-ui/react';
-import { AddIcon, MinusIcon } from '@chakra-ui/icons'; 
-import { AccordionItems, AccordionCustomProps } from "./AccordionCustom.logic";
+import { AccordionItems, BookingAccordionProps } from "./AccordionCustom.logic";
 import Button from "../Button/Button";
+import { router } from '@inertiajs/react';
 
 
+const AccordionBooking = ({booking} : BookingAccordionProps) => {
 
-const AccordionBooking = () => {
   return (
     <>
       <Accordion allowMultiple>
-        <AccordionItem>
-          <h2>
-            <AccordionButton>
+        <AccordionItem py={'20px'} textAlign={'center'}>
+          <>
+            <AccordionButton  _expanded={{
+                bg: '#DDDDDD'
+               }}>
               <Box as="span" flex='1' textAlign='left' fontWeight={'bold'}>
-                Antony Caíque - <Box as="span" color="#5CC6BA">{AccordionItems[0].label} às {AccordionItems[1].label}</Box>
+                {booking.user.name} - <Box as="span" color="#5CC6BA">{booking.date} às {booking.time}</Box>
               </Box>
               <AccordionIcon />
             </AccordionButton>
-          </h2>
+          </>
           <AccordionPanel pb={4} background={'#DDDDDD'}>
               <Flex flexDirection={'row'} alignItems={'center'} mb={2}>
                   <ChakraButton
                         as="a"
-                        href={`tel:${AccordionItems[2].label}`}
+                        href={`tel:${booking.user.contact}`}
                         bg="transparent"
                         leftIcon={AccordionItems[2].icon}
-                        aria-label={AccordionItems[2].label}
-                        fontSize="20px" 
+                        aria-label={'Contact'}
+                        fontSize="18px"
                       >
-                      {AccordionItems[2].label} 
-                  </ChakraButton>        
+                      {booking.user.contact}
+                  </ChakraButton>
               </Flex>
               <Flex flexDirection={'row'} alignItems={'center'} mb={2}>
                   <ChakraButton
                         as="a"
-                        href={`tel:${AccordionItems[3].label}`}
                         bg="transparent"
                         leftIcon={AccordionItems[3].icon}
-                        aria-label={AccordionItems[3].label}
-                        fontSize="20px" 
+                        aria-label={'Booking price'}
+                        fontSize="18px"
                       >
-                      {AccordionItems[3].label} 
-                  </ChakraButton>        
+                      {booking.total_price}
+                  </ChakraButton>
               </Flex>
               <Flex gap={4}>
                 <Button width={100}>Confirmar</Button>

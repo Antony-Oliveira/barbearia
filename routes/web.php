@@ -5,21 +5,21 @@ use App\Models\Booking;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/Admin/Dashboard', function(){
+Route::get('/Admin/Dashboard', function () {
     return inertia('Admin/Dashboard');
 })->name('dashboard');
 
-Route::get('/', function(){
+Route::get('/', function () {
     Auth::loginUsingId(3);
     $services = App\Models\Service::query()->take(6)->get();
     return inertia('Welcome', ['services' => $services]);
 });
 
-Route::get('/booking', function(){
+Route::get('/booking', function () {
     return inertia('Booking');
 })->name('booking');
 
-Route::get('/account', function(){
+Route::get('/account', function () {
     $user = auth()->user();
     $bookings = $user->bookings;
     $bookings = Booking::with('services')->find($bookings->pluck('id'));
@@ -28,9 +28,17 @@ Route::get('/account', function(){
 })->middleware('auth');
 
 
-Route::get('/login', function(){
+Route::get('/login', function () {
     return redirect('/');
 })->name('login');
 
 
 Route::post('/availability-check', [BookingController::class, 'availabilityCheck'])->name('booking.availability.check');
+
+
+Route::prefix('/admin')->group(function () {
+    Route::get('/dashboard', function () {
+        $booking = Booking::with('user')->get();
+        return inertia('Admin/Dashboard', ['bookings' => $booking]);
+    })->name('admin.dashboard');
+});
