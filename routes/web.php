@@ -5,6 +5,10 @@ use App\Models\Booking;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/Admin/Dashboard', function(){
+    return inertia('Admin/Dashboard');
+})->name('dashboard');
+
 Route::get('/', function(){
     Auth::loginUsingId(3);
     $services = App\Models\Service::query()->take(6)->get();
