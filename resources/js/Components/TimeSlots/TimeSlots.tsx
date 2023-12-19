@@ -61,8 +61,6 @@
                 <Text m={5} textAlign="center">
                     Hora selecionada: {selectedTime || 'Nenhum'}
                 </Text>
-                <Button children="Reservar"></Button>
-
             </Box>
         );
     };
