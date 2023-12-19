@@ -42,7 +42,9 @@ class BookingFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (Booking $booking) {
-            $booking->services()->attach(Service::pluck('id')->random());
+            $user = User::find(1);
+            // $booking->services()->attach(Service::pluck('id')->random());
+            $booking->user()->save($user);
         });
     }
 }
