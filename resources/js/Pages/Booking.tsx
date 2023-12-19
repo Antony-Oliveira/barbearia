@@ -2,10 +2,9 @@ import Header from "@/Components/Header/Header";
 import NavBar from "@/Components/NavBar/NavBar";
 import PageLoading from "@/Components/PageLoading/PageLoading";
 import DataPicker from "@/Components/DataPicker/DataPicker";
-import { Center, Divider, Spinner, Text } from "@chakra-ui/react";
+import { Divider } from "@chakra-ui/react";
 import { useState } from "react";
-import TimeSlots from "@/Components/TimeSlots/TimeSlots";
-// import Button from "@/Components/Button/Button";
+import Button from "@/Components/Button/Button";
 
 const Booking = () => {
     const [selectedDate, setSelectedDate] = useState<string | undefined>(undefined);
@@ -15,46 +14,18 @@ const Booking = () => {
 
     const handleDataSelect = async (date: string | undefined) => {
         setSelectedDate(date);
-        if (date) {
-            setIsLoading(true);
-            try {
-                const response = await window.axios.post(route('booking.availability.check'), {
-                    date: date
-                });
-                console.log(response);
-                setUnavailableTimes(response.data.unavaiableTimes);
-            } catch (e) {
-
-                //...
-
-            } finally {
-                setIsLoading(false);
-            }
-        }
     }
 
     const handleTimeSelection = (time: string | null) => {
         setSelectedTime(time);
-    };
+    }; //temp
 
     return (
         <>
             <Header text="Fazer uma reserva" />
             <DataPicker onDataSelect={handleDataSelect} />
             <Divider />
-            {selectedDate ? (
-                loading ? (
-                    <Center mt={10}>
-                        <Spinner />
-                    </Center>
-                ) : (
-                    <TimeSlots unavailableTimes={unavailableTimes} onSelectTime={handleTimeSelection} />
-                )
-            ) : (
-                <Center mt={5} mb={5}>
-                    <Text>Selecione uma data para iniciar seu agendamento</Text>
-                </Center>
-            )}
+            <Button>Reservar</Button>
             <NavBar activePage="Booking" />
             <PageLoading />
         </>
