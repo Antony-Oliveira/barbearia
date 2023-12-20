@@ -5,10 +5,6 @@ use App\Models\Booking;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/Admin/Dashboard', function () {
-    return inertia('Admin/Dashboard');
-})->name('dashboard');
-
 Route::get('/', function () {
     Auth::loginUsingId(3);
     $services = App\Models\Service::query()->take(6)->get();
@@ -27,7 +23,6 @@ Route::get('/account', function () {
     return inertia('Account', ['user' => $user, 'bookings' => $bookings]);
 })->middleware('auth');
 
-
 Route::get('/login', function () {
     return redirect('/');
 })->name('login');
@@ -41,4 +36,13 @@ Route::prefix('/admin')->group(function () {
         $booking = Booking::with('user')->get();
         return inertia('Admin/Dashboard', ['bookings' => $booking]);
     })->name('admin.dashboard');
+
+    Route::get('/bookings', function () {
+        return inertia('Admin/Bookings');
+    })->name('admin.bookings');
+
+    Route::get('/profile', function () {
+        return inertia('Admin/Profile');
+    })->name('admin.profile');
+    // end admin
 });

@@ -1,8 +1,8 @@
 import AccordionCustom from "@/Components/AccordionBooking/AccordionBooking";
 import Header from "@/Components/Header/Header";
-import NavBar from "@/Components/NavBar/NavBar";
 import PageLoading from "@/Components/PageLoading/PageLoading";
 import { Booking } from "@/types";
+import NavAdmin from "../../Components/NavAdmin/NavAdmin";
 
 interface DashboardProps {
     bookings: Booking[];
@@ -17,7 +17,7 @@ const Dashboard = ({ bookings }: DashboardProps) => {
                     <AccordionCustom booking={booking} />
                 ))
             }
-            <NavBar activePage="Dashboard" />
+            <NavAdmin activePage="Dashboard" />
             <PageLoading />
         </>
     )
