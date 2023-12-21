@@ -2,16 +2,14 @@ import Header from "@/Components/Header/Header";
 import PageLoading from "@/Components/PageLoading/PageLoading";
 import NavAdmin from "../../Components/NavAdmin/NavAdmin";
 
-const Dashboard = () => {
-
+const Profile = () => {
     return (
         <>
-            <Header text="Admin" />
-                
-            <NavAdmin activePage="Dashboard" />
-            <PageLoading />w
+            <Header text="Profile" />
+            <NavAdmin activePage="Profile" />
+            <PageLoading />
         </>
     )
 }
 
-export default Dashboard;
+export default Profile;
