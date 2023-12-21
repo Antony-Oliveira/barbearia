@@ -9,7 +9,7 @@ interface SearchProps {
     onSearch: (filteredBookings: Booking[]) => void;
 }
 
-const SearchComponent: React.FC<SearchProps> = ({ bookings, onSearch }) => {
+const Search: React.FC<SearchProps> = ({ bookings, onSearch }) => {
     const { searchText, setSearchText } = useSearch({
         bookings, onSearch
     });
@@ -30,4 +30,4 @@ const SearchComponent: React.FC<SearchProps> = ({ bookings, onSearch }) => {
     );
 };
 
-export default SearchComponent;
+export default Search;
