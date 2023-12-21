@@ -16,7 +16,7 @@ class BookingFactory extends Factory
      */
     public function definition(): array
     {
-        $user = User::find(1);
+        $user = User::find(rand(1, User::count()));
 
         // Crie entre 1 e 3 serviços para esta reserva
         $services = Service::factory(rand(1, 3))->create();
@@ -31,7 +31,7 @@ class BookingFactory extends Factory
             'date' => $date,
             'time' => $time,
             'note' => $this->faker->sentence,
-            'total_price' => 0.0,
+            'total_price' => fake()->randomFloat(2, 10, 200),
         ];
     }
 
@@ -43,8 +43,8 @@ class BookingFactory extends Factory
     {
         return $this->afterCreating(function (Booking $booking) {
             $user = User::find(1);
-            // $booking->services()->attach(Service::pluck('id')->random());
-            $booking->user()->save($user);
+            $booking->services()->attach(Service::pluck('id')->random());
+
         });
     }
 }
