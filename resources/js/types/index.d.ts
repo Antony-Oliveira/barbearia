@@ -14,6 +14,7 @@ export interface Booking {
     note?: string;
     total_price: number;
     services: Service[];
+    isConfirmed: boolean;
     user: User;
 }
 

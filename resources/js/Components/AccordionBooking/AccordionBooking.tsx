@@ -14,11 +14,12 @@ import Button from "../Button/Button";
 
 const AccordionBooking = ({ booking }: BookingAccordionProps) => {
 
-    const { deleteBooking, isLoading, isDeleted } = useAccordion();
+    const { deleteBooking, isLoading, isDeleted, updateBooking } = useAccordion();
 
     if (isDeleted) {
         return null
     }
+
     return (
         <>
             <Accordion allowMultiple >
@@ -58,7 +59,7 @@ const AccordionBooking = ({ booking }: BookingAccordionProps) => {
                             </ChakraButton>
                         </Flex>
                         <Flex gap={4}>
-                            <Button width={100}>Confirmar</Button>
+                            <Button width={100} onClick={() => updateBooking(booking.id)} isLoading={isLoading} visible={!booking.isConfirmed}>Confirmar</Button>
                             <Button bg="#C6B55C" width={100}>Reagendar</Button>
                             <Button bg="#DF5951" width={100} onClick={() => deleteBooking(booking.id)} isLoading={isLoading}>Excluir</Button>
                         </Flex>

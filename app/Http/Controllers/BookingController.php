@@ -24,4 +24,15 @@ class BookingController extends Controller
             return response()->json(['error' => 'Error deleting booking', 'message' => $e->getMessage()], 500);
         }
     }
+    public function update(int $id){
+        try{
+            $booking = Booking::findOrFail($id);
+            $booking->isConfirmed = true;
+            $booking->save();
+            return response()->json(["message" => 'Agendamento Confirmado com Sucesso!']);
+        }catch(\Exception $e){
+            return response()->json(["error" => 'Erro update booking!', 'message' => $e->getMessage()], 500);
+        }
+
+    }
 }

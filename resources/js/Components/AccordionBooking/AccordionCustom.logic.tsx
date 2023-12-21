@@ -17,8 +17,6 @@ export const AccordionItems: AccordionItem[] = [
     { icon: <MdAttachMoney color="#5CC6BA" className='w-8 mb-1' />, label: '15,00' },
 ];
 
-
-
 export const useAccordion = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [isDeleted, setIsDeleted] = useState<boolean>(false);
@@ -26,7 +24,6 @@ export const useAccordion = () => {
         try {
             setIsLoading(true);
             const response = await window.axios.delete(route('booking.destroy', { id: bookingId }));
-
             console.log('resultado', response.data);
             setIsDeleted(true);
         } catch (error : any) {
@@ -35,8 +32,19 @@ export const useAccordion = () => {
             setIsLoading(false);
         }
     };
+    const updateBooking = async (bookingId: number) => {
+        try{
+            setIsLoading(true);
+            const response = await window.axios.put(route('booking.update', {id: bookingId}));
+            console.log(response);
+        }catch(error:any){
+            console.error('error', error.message);
+        }finally{
+            setIsLoading(false);
+        }
+    }
 
-    return { deleteBooking, isLoading, isDeleted}
+    return { deleteBooking, isLoading, isDeleted, updateBooking}
 
 };
 

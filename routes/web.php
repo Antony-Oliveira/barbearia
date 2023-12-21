@@ -44,5 +44,6 @@ Route::prefix('/admin')->group(function () {
         return inertia('Admin/Profile');
     })->name('admin.profile');
     Route::delete('/booking-destroy/{id}', [BookingController::class, 'destroy'])->name('booking.destroy');
+    Route::put('/booking-update/{id}', [BookingController::class, 'update'])->name('booking.update');
 });
 
