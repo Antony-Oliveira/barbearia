@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('time');
             $table->text('note')->nullable();
             $table->decimal('total_price', 8,2);
+            $table->boolean('isConfirmed');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
