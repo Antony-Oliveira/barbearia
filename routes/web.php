@@ -30,19 +30,17 @@ Route::get('/login', function () {
 
 Route::post('/availability-check', [BookingController::class, 'availabilityCheck'])->name('booking.availability.check');
 
-
 Route::prefix('/admin')->group(function () {
-    Route::get('/dashboard', function () {
-        $booking = Booking::with('user')->get();
-        return inertia('Admin/Dashboard', ['bookings' => $booking]);
-    })->name('admin.dashboard');
-
     Route::get('/bookings', function () {
-        return inertia('Admin/Bookings');
+        $booking = Booking::with('user')->get();
+        return inertia('Admin/Bookings', ['bookings' => $booking]);
     })->name('admin.bookings');
+
+    Route::get('/dashboard', function () {
+        return inertia('Admin/Dashboard');
+    })->name('admin.dashboard');
 
     Route::get('/profile', function () {
         return inertia('Admin/Profile');
     })->name('admin.profile');
-    // end admin
 });

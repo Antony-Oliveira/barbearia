@@ -17,13 +17,13 @@ const AccordionBooking = ({booking} : BookingAccordionProps) => {
 
   return (
     <>
-      <Accordion allowMultiple>
-        <AccordionItem py={'20px'} textAlign={'center'}>
+      <Accordion allowMultiple >
+        <AccordionItem textAlign={'center'}>
           <>
             <AccordionButton  _expanded={{
                 bg: '#DDDDDD'
                }}>
-              <Box as="span" flex='1' textAlign='left' fontWeight={'bold'}>
+              <Box as="span" flex='1' textAlign='left' fontWeight={'bold'} py={2}>
                 {booking.user.name} - <Box as="span" color="#5CC6BA">{booking.date} às {booking.time}</Box>
               </Box>
               <AccordionIcon />

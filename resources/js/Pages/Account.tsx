@@ -15,7 +15,7 @@ interface BookingDetailsProps {
 }
 
 function BookingDetails({ booking }: BookingDetailsProps) {
-
+a
     return (
         <VStack align="start" mt={2} ml={1} mb={3}>
             <Text fontSize={18} fontWeight="bold">Reserva para o dia {booking.booking_date}</Text>
