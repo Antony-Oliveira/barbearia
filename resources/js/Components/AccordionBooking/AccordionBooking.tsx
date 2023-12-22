@@ -10,12 +10,13 @@ import {
 } from '@chakra-ui/react';
 import { AccordionItems, BookingAccordionProps, useAccordion } from "./AccordionCustom.logic";
 import Button from "../Button/Button";
+import { useState } from 'react';
 
 
 const AccordionBooking = ({ booking }: BookingAccordionProps) => {
 
-    const { deleteBooking, isLoading, isDeleted, updateBooking } = useAccordion();
-
+    const { deleteBooking, isLoading, isDeleted, updateBooking, actionType } = useAccordion();
+    const [isBookingConfirmed, setIsBookingConfirmed] = useState<boolean>(booking.isConfirmed);
     if (isDeleted) {
         return null
     }
@@ -59,9 +60,13 @@ const AccordionBooking = ({ booking }: BookingAccordionProps) => {
                             </ChakraButton>
                         </Flex>
                         <Flex gap={4}>
-                            <Button width={100} onClick={() => updateBooking(booking.id)} isLoading={isLoading} visible={!booking.isConfirmed}>Confirmar</Button>
+                            {
+                                !isBookingConfirmed && (
+                                    <Button width={100} onClick={() => updateBooking(booking.id, setIsBookingConfirmed)} isLoading={isLoading && actionType === 'update'}>Confirmar</Button>
+                                )
+                            }
                             <Button bg="#C6B55C" width={100}>Reagendar</Button>
-                            <Button bg="#DF5951" width={100} onClick={() => deleteBooking(booking.id)} isLoading={isLoading}>Excluir</Button>
+                            <Button bg="#DF5951" width={100} onClick={() => deleteBooking(booking.id)} isLoading={isLoading && actionType === 'delete'}>Excluir</Button>
                         </Flex>
                     </AccordionPanel>
                 </AccordionItem>

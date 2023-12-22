@@ -2,6 +2,7 @@ import { FaCalendar, FaClock, FaWhatsapp } from "react-icons/fa";
 import { MdAttachMoney } from "react-icons/md";
 import { Booking } from "@/types";
 import { useState } from "react";
+
 export interface BookingAccordionProps {
     booking: Booking;
 }
@@ -20,31 +21,41 @@ export const AccordionItems: AccordionItem[] = [
 export const useAccordion = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [isDeleted, setIsDeleted] = useState<boolean>(false);
-    const deleteBooking = async (bookingId : number) => {
+    const [actionType, setActionType] = useState<"delete" | "update" | undefined>();
+    const [isBookingConfirmed, setIsBookingConfirmed] = useState<boolean>(false);
+
+    const deleteBooking = async (bookingId: number) => {
         try {
             setIsLoading(true);
+            setActionType("delete");
             const response = await window.axios.delete(route('booking.destroy', { id: bookingId }));
             console.log('resultado', response.data);
             setIsDeleted(true);
-        } catch (error : any) {
+        } catch (error: any) {
             console.error('erro:', error.message);
-        }finally{
+        } finally {
+            setActionType(undefined);
             setIsLoading(false);
         }
     };
-    const updateBooking = async (bookingId: number) => {
-        try{
+    const updateBooking = async (bookingId: number, setIsBookingConfirmed : (isConfirmed : boolean) => void) => {
+        try {
             setIsLoading(true);
-            const response = await window.axios.put(route('booking.update', {id: bookingId}));
+            setActionType('update');
+            const response = await window.axios.put(route('booking.update', { id: bookingId }));
+            setIsBookingConfirmed(true)
             console.log(response);
-        }catch(error:any){
+        } catch (error: any) {
             console.error('error', error.message);
-        }finally{
+        } finally {
+            setActionType(undefined);
+
             setIsLoading(false);
         }
     }
 
-    return { deleteBooking, isLoading, isDeleted, updateBooking}
+
+    return { deleteBooking, isLoading, isDeleted, updateBooking, actionType }
 
 };
 
