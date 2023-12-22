@@ -2,11 +2,12 @@
 
 use App\Http\Controllers\BookingController;
 use App\Models\Booking;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    Auth::loginUsingId(3);
+    Auth::loginUsingId(rand(1, User::count()));
     $services = App\Models\Service::query()->take(6)->get();
     return inertia('Welcome', ['services' => $services]);
 });
