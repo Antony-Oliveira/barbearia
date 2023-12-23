@@ -2,8 +2,6 @@ export interface User {
     id: number;
     name: string;
     contact: string;
-    email: string;
-    email_verified_at: string;
     bookings: Booking[];
 }
 
