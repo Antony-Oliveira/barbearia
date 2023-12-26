@@ -11,6 +11,7 @@ import {
 import { AccordionItems, BookingAccordionProps, useAccordion } from "./AccordionCustom.logic";
 import Button from "../Button/Button";
 import { useState } from 'react';
+import { format, parseISO } from 'date-fns';
 
 
 const AccordionBooking = ({ booking }: BookingAccordionProps) => {
@@ -30,7 +31,7 @@ const AccordionBooking = ({ booking }: BookingAccordionProps) => {
                             bg: '#DDDDDD'
                         }}>
                             <Box as="span" flex='1' textAlign='left' fontWeight={'bold'} py={2}>
-                                {booking.user.name} - <Box as="span" color="#5CC6BA">{booking.date} às {booking.time}</Box>
+                                {booking.user.name} - <Box as="span" color="#5CC6BA">{format(parseISO(booking.date), 'dd/MM/yyyy')} às {booking.time}</Box>
                             </Box>
                             <AccordionIcon />
                         </AccordionButton>

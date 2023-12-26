@@ -22,7 +22,6 @@ export const useAccordion = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [isDeleted, setIsDeleted] = useState<boolean>(false);
     const [actionType, setActionType] = useState<"delete" | "update" | undefined>();
-    const [isBookingConfirmed, setIsBookingConfirmed] = useState<boolean>(false);
 
     const deleteBooking = async (bookingId: number) => {
         try {
@@ -38,13 +37,13 @@ export const useAccordion = () => {
             setIsLoading(false);
         }
     };
-    const updateBooking = async (bookingId: number, setIsBookingConfirmed : (isConfirmed : boolean) => void) => {
+    const updateBooking = async (bookingId: number, setIsBookingConfirmed: (isConfirmed: boolean) => void) => {
         try {
             setIsLoading(true);
             setActionType('update');
-            const response = await window.axios.put(route('booking.update', { id: bookingId }));
+            const { data } = await window.axios.put(route('booking.update', { id: bookingId }));
             setIsBookingConfirmed(true)
-            console.log(response);
+            console.log(data);
         } catch (error: any) {
             console.error('error', error.message);
         } finally {
