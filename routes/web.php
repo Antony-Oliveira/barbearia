@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\BookingController;
 use App\Models\Booking;
+use App\Models\Service;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +15,8 @@ Route::get('/', function () {
 });
 
 Route::get('/booking', function () {
-    return inertia('Booking');
+    $services = Service::all();
+    return inertia('Booking', ['services' => $services]);
 })->name('booking');
 
 Route::get('/account', function () {
@@ -33,8 +36,11 @@ Route::post('/availability-check', [BookingController::class, 'availabilityCheck
 
 Route::prefix('/admin')->group(function () {
     Route::get('/managerbookings', function () {
-        $booking = Booking::with('user')->get();
-        return inertia('Admin/ManagerBookings', ['bookings' => $booking]);
+        $bookings = Booking::with('user')
+            ->orderBy('date')
+            ->orderBy('time')
+            ->get();
+        return inertia('Admin/ManagerBookings', ['bookings' => $bookings]);
     })->name('admin.bookings');
 
     Route::get('/dashboard', function () {
@@ -48,3 +54,27 @@ Route::prefix('/admin')->group(function () {
     Route::put('/booking-update/{id}', [BookingController::class, 'update'])->name('booking.update');
 });
 
+
+Route::post('/revenue/day', function (Request $req) {
+
+    $booking = App\Models\Booking::where('date', $req->input('day'));
+    $revenue = $booking->sum('total_price');
+    return response()->json(['revenue' => $revenue, 'clientCount' => $booking->count()]);
+})->name('revenue.day');
+
+Route::post('/revenue/month', function (Request $request) {
+    try {
+        $month = $request->input('date');
+
+        $bookings = Booking::whereYear('date', '=', substr($month, 0, 4))
+            ->whereMonth('date', '=', substr($month, 5, 2))
+            ->get();
+
+        $totalRevenue = $bookings->sum('total_price');
+        $clientsCounter = $bookings->count();
+
+        return response()->json(['revenue' => $totalRevenue, 'clientCount' => $clientsCounter]);
+    } catch (Exception $e) {
+        return response()->json(['erro' => $e->getMessage()]);
+    }
+})->name('revenue.month');
