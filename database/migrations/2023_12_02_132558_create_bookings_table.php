@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('date');
+            $table->date('date');
             $table->string('time');
             $table->text('note')->nullable();
             $table->decimal('total_price', 8,2);
