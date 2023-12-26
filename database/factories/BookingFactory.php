@@ -6,6 +6,7 @@ use App\Models\Booking;
 use App\Models\User;
 use App\Models\Service;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Carbon;
 
 class BookingFactory extends Factory
 {
@@ -24,11 +25,10 @@ class BookingFactory extends Factory
         $times = ['09:00', '09:30', '10:00', '10:30', '13:00', '13:30', '14:00', '14:30'];
         $time = $this->faker->randomElement($times);
 
-        $date = $this->faker->dateTimeBetween('2023-12-01', '2023-12-31')->format('d/m/Y');
 
         return [
             'user_id' => $user->id,
-            'date' => $date,
+            'date' => Carbon::create(2023, 12, rand(1, 31)),
             'time' => $time,
             'note' => $this->faker->sentence,
             'total_price' => fake()->randomFloat(2, 10, 200),
