@@ -21,6 +21,7 @@ const Search: React.FC<SearchProps> = ({ bookings, onSearch }) => {
                 <Input
                     type="text"
                     placeholder="Buscar por nome/telefone"
+                    _placeholder={{ textAlign: "center" }}
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}
                 />
