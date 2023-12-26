@@ -1,6 +1,6 @@
 // DataPicker.tsx
-import { useState } from 'react';
-import { format } from 'date-fns';
+import { useEffect, useState } from 'react';
+import { format, getMonth } from 'date-fns';
 import { DayPicker, SelectSingleEventHandler } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { Box, Center, Flex, Spinner, Text } from '@chakra-ui/react';
@@ -17,23 +17,27 @@ interface iResponse {
     unavaiableTimes: string[];
 }
 
+
 const DataPicker = ({ onDataSelect }: DataPickerProps) => {
     const [date, setDate] = useState<Date | undefined>();
     const [time, setTime] = useState<string | null>(null);
     const [isLoading, setLoading] = useState<boolean>(false);
     const [unavaiableTimes, setUnavaiableTimes] = useState<string[]>([])
 
+
     const onSelect: SelectSingleEventHandler = async (day) => {
         if (day && day != date) {
             try {
-                let formatedDay = format(day, 'dd/MM/yyyy', { locale: ptBR });
+                let formatedDay = format(day, 'Y-M-d');
+                console.log(formatedDay);
+
                 setDate(day);
                 onDataSelect(day ? formatedDay : undefined);
 
                 setLoading(true);
 
                 const response: AxiosResponse<iResponse> = await window.axios.post(route('booking.availability.check'), {
-                    date: formatedDay
+                    date: format(day, 'Y-M-d'),
                 });
                 console.log(response);
                 setUnavaiableTimes(response.data.unavaiableTimes);
@@ -52,6 +56,7 @@ const DataPicker = ({ onDataSelect }: DataPickerProps) => {
     const handleTimeSelection = (time: string | null) => {
         setTime(time);
     };
+
 
     return (
         <>
