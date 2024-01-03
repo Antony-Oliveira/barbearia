@@ -1,7 +1,7 @@
 import React from "react";
 import useSearch from "./Search.logic";
 import { Booking } from "@/types";
-import { Center, InputGroup, InputLeftElement, InputRightAddon, Input} from "@chakra-ui/react";
+import { Center, InputGroup, InputLeftElement, Input, Select} from "@chakra-ui/react";
 import { FaSearch } from "react-icons/fa";
 
 interface SearchProps {
@@ -10,8 +10,8 @@ interface SearchProps {
 }
 
 const Search: React.FC<SearchProps> = ({ bookings, onSearch }) => {
-    const { searchText, setSearchText } = useSearch({
-        bookings, onSearch
+    const { searchText, setSearchText, filterTerm, setFilterTerm } = useSearch({
+        bookings, onSearch,
     });
 
     return (
@@ -26,6 +26,16 @@ const Search: React.FC<SearchProps> = ({ bookings, onSearch }) => {
                     onChange={(e) => setSearchText(e.target.value)}
                 />
             </InputGroup>
+            <Select
+                value={filterTerm}
+                onChange={(e) => setFilterTerm(e.target.value)}
+                mb={4}
+                placeholder="Selecionar"
+            >
+                <option value="all">Todos</option>
+                <option value="confirmed">Confirmados</option>
+                <option value="notConfirmed">Não Confirmados</option>
+            </Select>
         </Center>
 
     );
