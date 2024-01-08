@@ -1,9 +1,10 @@
 import React from 'react';
-import { Box, Flex, IconButton } from "@chakra-ui/react";
+import { Box, Flex, IconButton,  useColorModeValue } from "@chakra-ui/react";
 import { Link } from "@inertiajs/react";
 import { navItems, NavBarProps } from "./NavBar.logic";
-
 const NavBar = ({ activePage }: NavBarProps) => {
+
+     useColorModeValue('white', 'black');
     return (
         <>
             <Box mt={100}></Box>
@@ -12,7 +13,7 @@ const NavBar = ({ activePage }: NavBarProps) => {
                 justify="space-around"
                 borderTop="#ECECEC 1px solid"
                 zIndex={1}
-                bg="white"
+                bg={useColorModeValue('white', '#1A202C')}
                 h={61}
                 position="fixed"
                 bottom={0}
@@ -23,7 +24,6 @@ const NavBar = ({ activePage }: NavBarProps) => {
                         <IconButton
                         position={'sticky'}
                             as="p"
-                            bg="transparent"
                             icon={item.icon}
                             h='0'
                             aria-label={item.label}
