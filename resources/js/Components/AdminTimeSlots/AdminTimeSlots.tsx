@@ -10,7 +10,7 @@ interface TimeSlotsProps {
 
 const TimeSlots = ({ onSelectTime, unavailableTimes = [] }: TimeSlotsProps) => {
 
-    const {selectedTime, handleTimeClick, setSelectedTime} = useTimeSelection(onSelectTime);
+    const {selectedTime, handleTimeClick, setSelectedTime} = useTimeSelection();
 
     return (
         <Box className="TimeSlots">
