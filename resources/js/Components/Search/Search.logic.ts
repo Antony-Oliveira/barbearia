@@ -1,40 +1,54 @@
 import { useState, useMemo, useEffect } from "react";
-import { Booking } from "@/types";
+import { Booking, User } from "@/types";
 
 interface UseSearchProps {
-    bookings: Booking[];
-    onSearch: (bookings: Booking[]) => void;
+    bookings?: Booking[];
+    users?: User[];
+    onSearch: (filteredItems: Booking[] | User[] | undefined) => void;
+    filterNeed: boolean | undefined;
 }
 
-const useSearch = ({ bookings = [], onSearch }: UseSearchProps) => {
+const useSearch = ({ bookings, onSearch, filterNeed = false, users }: UseSearchProps) => {
     const [searchText, setSearchText] = useState<string>("");
     const [filterTerm, setFilterTerm] = useState<string>("all");
 
-    const filteredBookings = useMemo(() => {
+    const filteredItems = useMemo(() => {
         const lowerCaseSearchText = searchText.toLowerCase();
-        const textFilteredBookings = bookings.filter((booking) => {
-            return (
-                booking?.user?.name?.toLowerCase().includes(lowerCaseSearchText) ||
-                booking?.user?.contact?.includes(lowerCaseSearchText)
-            );
-        });
+        if (bookings) {
+            const textFilteredBookings = bookings.filter((booking) => {
+                return (
+                    booking?.user?.name?.toLowerCase().includes(lowerCaseSearchText) ||
+                    booking?.user?.contact?.includes(lowerCaseSearchText)
+                );
+            });
 
-        if (filterTerm === "confirmed") {
-            return textFilteredBookings.filter((booking) =>{ return booking.isConfirmed });
-        } else if (filterTerm === "notConfirmed") {
-            return textFilteredBookings.filter((booking) => { return !booking.isConfirmed} );
+            if (filterTerm === "confirmed") {
+                return textFilteredBookings.filter((booking) => { return booking.isConfirmed });
+            } else if (filterTerm === "notConfirmed") {
+                return textFilteredBookings.filter((booking) => { return !booking.isConfirmed });
+            }
+            return textFilteredBookings;
+        } else if (users) {
+            const textFilteredUsers = users.filter((user) => {
+                return (
+                    user?.name?.toLowerCase().includes(lowerCaseSearchText) ||
+                    user?.contact?.includes(lowerCaseSearchText)
+                );
+            });
+
+
+            return textFilteredUsers;
         }
-        return textFilteredBookings;
-    }, [bookings, searchText, filterTerm]);
+    }, [bookings,users, searchText, filterTerm]);
 
     useEffect(() => {
-        onSearch(filteredBookings);
-    }, [filteredBookings, onSearch]);
+        onSearch(filteredItems);
+    }, [filteredItems, onSearch]);
 
     return {
         searchText,
         setSearchText,
-        filteredBookings,
+        filteredItems,
         filterTerm,
         setFilterTerm
     };

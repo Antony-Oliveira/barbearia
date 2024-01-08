@@ -1,17 +1,19 @@
 import React from "react";
 import useSearch from "./Search.logic";
-import { Booking } from "@/types";
-import { Center, InputGroup, InputLeftElement, Input, Select} from "@chakra-ui/react";
+import { Booking, User } from "@/types";
+import { Center, InputGroup, InputLeftElement, Input, Select } from "@chakra-ui/react";
 import { FaSearch } from "react-icons/fa";
 
 interface SearchProps {
-    bookings: Booking[];
-    onSearch: (filteredBookings: Booking[]) => void;
+    bookings?: Booking[];
+    users?: User[];
+    onSearch: (filteredItems: Booking[] | User[] | undefined) => void;
+    filterNeed: boolean | undefined;
 }
 
-const Search: React.FC<SearchProps> = ({ bookings, onSearch }) => {
+const Search: React.FC<SearchProps> = ({ bookings, users, onSearch, filterNeed = false }) => {
     const { searchText, setSearchText, filterTerm, setFilterTerm } = useSearch({
-        bookings, onSearch,
+        bookings, onSearch, filterNeed, users
     });
 
     return (
@@ -26,16 +28,18 @@ const Search: React.FC<SearchProps> = ({ bookings, onSearch }) => {
                     onChange={(e) => setSearchText(e.target.value)}
                 />
             </InputGroup>
-            <Select
-                value={filterTerm}
-                onChange={(e) => setFilterTerm(e.target.value)}
-                mb={4}
-                placeholder="Selecionar"
-            >
-                <option value="all">Todos</option>
-                <option value="confirmed">Confirmados</option>
-                <option value="notConfirmed">Não Confirmados</option>
-            </Select>
+            {filterNeed ?? (
+                <Select
+                    value={filterTerm}
+                    onChange={(e) => setFilterTerm(e.target.value)}
+                    mb={4}
+                    placeholder="Selecionar"
+                >
+                    <option value="all">Todos</option>
+                    <option value="confirmed">Confirmados</option>
+                    <option value="notConfirmed">Não Confirmados</option>
+                </Select>
+            )}
         </Center>
 
     );
