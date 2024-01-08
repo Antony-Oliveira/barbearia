@@ -1,18 +1,12 @@
 import React from 'react';
-import { Box, Flex, Text, Tab, TabList, TabPanel, TabPanels, Tabs, TabIndicator } from '@chakra-ui/react';
+import { Box, Flex,Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
 import { times } from './app';
 import './TimeSlots.css';
 import { useTimeSelection } from './app';
+import { Link } from '@inertiajs/react';
+const TimeSlots = () => {
 
-interface TimeSlotsProps {
-    onSelectTime: (selectedTime: string | null) => void;
-    unavailableTimes?: string[];
-}
-
-const TimeSlots = ({ onSelectTime, unavailableTimes = [] }: TimeSlotsProps) => {
-
-    const {selectedTime, handleTimeClick, setSelectedTime} = useTimeSelection(onSelectTime);
-
+    const {selectedTime, handleTimeClick, setSelectedTime, getValues} = useTimeSelection();
     return (
         <Box className="TimeSlots">
             <Tabs isLazy variant={'soft-rounded'} align='center' onChange={() => setSelectedTime(null)}>
@@ -26,7 +20,7 @@ const TimeSlots = ({ onSelectTime, unavailableTimes = [] }: TimeSlotsProps) => {
                         <TabPanel key={periodIndex}>
                             <Flex justify="center" flexWrap="wrap" gap={3}>
                                 {period.hours.map((time, index) => {
-                                    const isUnavailable = unavailableTimes.includes(time);
+                                    const isUnavailable = getValues().unavailableTimes.includes(time);
                                     return (
                                         <Box
                                             aria-disabled={isUnavailable}

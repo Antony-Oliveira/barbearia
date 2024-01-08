@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 
 const times = [
     {
@@ -18,12 +19,13 @@ const times = [
 export { times };
 
 
-export const useTimeSelection = (onSelectTime: (time: string | null) => void) => {
+export const useTimeSelection = () => {
     const [selectedTime, setSelectedTime] = useState<string | null>(null);
+    const {getValues, setValue} = useFormContext();
 
     const handleTimeClick = (time: string) => {
         setSelectedTime((prevTime) => (prevTime === time ? null : time));
-        onSelectTime(time);
+        setValue('time', time);
     };
 
     const resetSelectedTime = () => {
@@ -35,6 +37,8 @@ export const useTimeSelection = (onSelectTime: (time: string | null) => void) =>
         setSelectedTime,
         handleTimeClick,
         resetSelectedTime,
+        getValues
+
     };
 };
 
