@@ -5,27 +5,23 @@ import DataPicker from "@/Components/DataPicker/DataPicker";
 import { Divider } from "@chakra-ui/react";
 import { useState } from "react";
 import Button from "@/Components/Button/Button";
+import BookingForm from "@/Components/BookingForm/BookingForm";
 
-const Booking = () => {
+const Booking = ({services} : any) => {
     const [selectedDate, setSelectedDate] = useState<string | undefined>(undefined);
-    const [selectedTime, setSelectedTime] = useState<string | null>(null);
-    const [unavailableTimes, setUnavailableTimes] = useState<string[]>([]);
-    const [loading, setIsLoading] = useState<boolean>(false);
+    const [selectedServices, setSelectedServices] = useState<(string | number)[]>();
 
     const handleDataSelect = async (date: string | undefined) => {
         setSelectedDate(date);
     }
-
-    const handleTimeSelection = (time: string | null) => {
-        setSelectedTime(time);
-    }; //temp
+    const handleServicesSelect = (values : (string | number)[]) => {
+        setSelectedServices(values);
+    }
 
     return (
         <>
             <Header text="Fazer uma reserva" />
-            <DataPicker onDataSelect={handleDataSelect} />
-            <Divider />
-            <Button>Reservar</Button>
+            <BookingForm  services={services} />
             <NavBar activePage="Booking" />
             <PageLoading />
         </>
