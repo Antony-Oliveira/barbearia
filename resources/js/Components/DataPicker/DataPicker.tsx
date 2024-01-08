@@ -1,62 +1,54 @@
 // DataPicker.tsx
-import { useEffect, useState } from 'react';
-import { format, getMonth } from 'date-fns';
+import { useState } from 'react';
+import { format } from 'date-fns';
+import { useFormContext } from 'react-hook-form';
 import { DayPicker, SelectSingleEventHandler } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
-import { Box, Center, Flex, Spinner, Text } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import { ptBR } from 'date-fns/locale';
 import './style.css';
-import TimeSlots from '../TimeSlots/TimeSlots';
 import { AxiosResponse } from 'axios';
 
 interface DataPickerProps {
-    onDataSelect: (date: string | undefined) => void;
+    // onDataSelect: (data: { date: string | undefined, time: string | null }) => void;
 }
 
 interface iResponse {
     unavaiableTimes: string[];
 }
 
+const DataPicker = ({ onDataSelect }) => {
+    const { setValue, watch } = useFormContext();
 
-const DataPicker = ({ onDataSelect }: DataPickerProps) => {
-    const [date, setDate] = useState<Date | undefined>();
-    const [time, setTime] = useState<string | null>(null);
-    const [isLoading, setLoading] = useState<boolean>(false);
-    const [unavaiableTimes, setUnavaiableTimes] = useState<string[]>([])
-
-
+    const [date, setDate] = useState();
+    const [unavailableTimes, setUnavailableTimes] = useState<string[]>([]);
     const onSelect: SelectSingleEventHandler = async (day) => {
-        if (day && day != date) {
+        if (day && day !== date) {
             try {
-                let formatedDay = format(day, 'Y-M-d');
-                console.log(formatedDay);
+                onDataSelect(true);
 
-                setDate(day);
-                onDataSelect(day ? formatedDay : undefined);
+                let formattedDay = format(day, 'Y-M-d');
 
-                setLoading(true);
 
                 const response: AxiosResponse<iResponse> = await window.axios.post(route('booking.availability.check'), {
-                    date: format(day, 'Y-M-d'),
+                    date: formattedDay,
                 });
-                console.log(response);
-                setUnavaiableTimes(response.data.unavaiableTimes);
+                setValue('unavailableTimes', response.data.unavaiableTimes);
+                setDate(day)
+                setValue('date', day);
+
+
+                setUnavailableTimes(response.data.unavaiableTimes);
 
             } catch (e) {
-
+                // ...
             } finally {
-                setLoading(false);
+                onDataSelect(false);
             }
-        }else{
-            setDate(undefined);
+        } else {
+            setValue('date', undefined);
         }
     };
-
-
-    const handleTimeSelection = (time: string | null) => {
-        setTime(time);
-    };
-
 
     return (
         <>
@@ -73,15 +65,7 @@ const DataPicker = ({ onDataSelect }: DataPickerProps) => {
                     />
                 </Box>
             </Flex>
-            {date ? (
-                isLoading ? (
-                    <Center my={10}><Spinner /></Center>
-                ) : (
-                    <TimeSlots onSelectTime={handleTimeSelection} unavailableTimes={unavaiableTimes} />
-                )
-            ) : (
-                <Center my={4}><Text>Por favor, escolha uma data para iniciar o agendamento</Text></Center>
-            )}
+
         </>
     );
 }
