@@ -22,6 +22,11 @@ export interface Service {
     price: number;
     photo: string;
 }
+
+export interface IBookingFormData {
+    user: User;
+    userExists: boolean;
+}
 export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
     auth: {
         user: User;
