@@ -28,7 +28,7 @@ class BookingFactory extends Factory
 
         return [
             'user_id' => $user->id,
-            'date' => Carbon::create(2023, 12, rand(1, 31)),
+            'date' => Carbon::create(2024, 1, rand(1, 31)),
             'time' => $time,
             'note' => $this->faker->sentence,
             'total_price' => fake()->randomFloat(2, 10, 200),
