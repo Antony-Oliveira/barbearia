@@ -44,7 +44,9 @@ Route::prefix('/admin')->group(function () {
     })->name('admin.bookings');
 
     Route::get('/dashboard', function () {
-        return inertia('Admin/Dashboard');
+        $services = App\Models\Service::query()->take(6)->get();
+
+        return inertia('Admin/Dashboard', ['services' => $services ,'users' => User::all()]);
     })->name('admin.dashboard');
 
     Route::get('/profile', function () {
