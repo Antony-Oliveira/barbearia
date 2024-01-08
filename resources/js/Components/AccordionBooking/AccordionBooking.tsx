@@ -21,7 +21,6 @@ const AccordionBooking = ({ booking }: BookingAccordionProps) => {
     if (isDeleted) {
         return null
     }
-
     return (
         <>
             <Accordion allowMultiple >
@@ -66,8 +65,7 @@ const AccordionBooking = ({ booking }: BookingAccordionProps) => {
                                     <Button width={100} onClick={() => updateBooking(booking.id, setIsBookingConfirmed)} isLoading={isLoading && actionType === 'update'}>Confirmar</Button>
                                 )
                             }
-                            <Button bg="#C6B55C" width={100}>Reagendar</Button>
-                            <Button bg="#DF5951" width={100} onClick={() => deleteBooking(booking.id)} isLoading={isLoading && actionType === 'delete'}>Excluir</Button>
+                    <Button bg="#DF5951" width={100} onClick={() => deleteBooking(booking.id)} isLoading={isLoading && actionType === 'delete'}>Excluir</Button>
                         </Flex>
                     </AccordionPanel>
                 </AccordionItem>
